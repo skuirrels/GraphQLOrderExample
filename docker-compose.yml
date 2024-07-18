@@ -1,0 +1,37 @@
+﻿networks:
+  localdev:
+    name: localdev
+
+services:
+  api:
+    container_name: pg-graphql-api
+    image: pg-graphql-api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "6060:6060"
+    
+    depends_on:
+      - db
+    networks:
+      - localdev
+    environment:
+      DBHOST: db
+      ASPNETCORE_ENVIRONMENT: Production
+      APP_CONNECTIONSTRING: "Host=db; Database=PgGraphql; Uid=postgres; Pwd=postgres"
+  
+  db:
+    image: postgres:latest
+    restart: always
+    container_name: postgres-graphql-db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - localdev
+#    volumes:
+#      - ./pgdata:/var/lib/postgres/data
