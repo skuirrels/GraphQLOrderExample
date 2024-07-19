@@ -6,7 +6,7 @@ services:
   db:
     image: postgres:latest
     restart: unless-stopped
-    container_name: postgres-graphql-db
+    container_name: graphql-db
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres

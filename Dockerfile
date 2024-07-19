@@ -2,7 +2,7 @@
 USER $APP_UID
 WORKDIR /app
 
-ENV ASPNETCORE_URLS http://+:6060
+ENV ASPNETCORE_URLS=http://+:6060
 EXPOSE 6060
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
