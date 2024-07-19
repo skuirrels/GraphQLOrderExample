@@ -1,8 +1,6 @@
 ﻿using GraphQLOrderExample.DomainModels;
 
-namespace GraphQLOrderExample;
-
-using System.Collections.Generic;
+namespace GraphQLOrderEExample.Data;
 
 public class DataSeeder
 {

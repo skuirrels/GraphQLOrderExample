@@ -1,0 +1,18 @@
+﻿networks:
+  localdev:
+    name: localdev
+
+services:
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    container_name: postgres-graphql-db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - localdev
+#    volumes:
+#      - ./pgdata:/var/lib/postgres/data

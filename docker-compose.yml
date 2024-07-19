@@ -4,28 +4,27 @@
 
 services:
   api:
-    container_name: pg-graphql-api
-    image: pg-graphql-api
+    container_name: graphql-api
+    image: graphql-api
     build:
       context: .
       dockerfile: ./Dockerfile
     restart: always
     ports:
       - "6060:6060"
-    
     depends_on:
       - db
     networks:
       - localdev
     environment:
       DBHOST: db
-      ASPNETCORE_ENVIRONMENT: Production
-      APP_CONNECTIONSTRING: "Host=db; Database=PgGraphql; Uid=postgres; Pwd=postgres"
+      ASPNETCORE_ENVIRONMENT: Development
+      APP_CONNECTIONSTRING: "Host=db; Database=OrdersDB; Uid=postgres; Pwd=postgres"
   
   db:
     image: postgres:latest
-    restart: always
-    container_name: postgres-graphql-db
+    restart: unless-stopped
+    container_name: graphql-db
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
