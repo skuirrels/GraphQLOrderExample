@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 // Use Docker ConnectionString Param or fallback to the connnectionstring is appsettings.json
 var connectionString = Environment.GetEnvironmentVariable("APP_CONNECTIONSTRING")??
                        builder.Configuration.GetConnectionString("OrdersDB");
@@ -22,6 +24,8 @@ builder.Services
     .AddQueryType<OrderQuery>();
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 app.MapGraphQL();
 
