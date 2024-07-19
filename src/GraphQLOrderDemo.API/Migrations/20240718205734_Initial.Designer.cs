@@ -26,7 +26,7 @@ namespace GraphQLOrderExample.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("GraphQLOrderExample.DomainModels.Order", b =>
+            modelBuilder.Entity("GraphQLOrderDemo.API.DomainModels.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,7 +64,7 @@ namespace GraphQLOrderExample.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("GraphQLOrderExample.DomainModels.OrderLine", b =>
+            modelBuilder.Entity("GraphQLOrderDemo.API.DomainModels.OrderLine", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,7 +94,7 @@ namespace GraphQLOrderExample.Migrations
                     b.ToTable("OrderLines");
                 });
 
-            modelBuilder.Entity("GraphQLOrderExample.DomainModels.Party", b =>
+            modelBuilder.Entity("GraphQLOrderDemo.API.DomainModels.Party", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -136,27 +136,27 @@ namespace GraphQLOrderExample.Migrations
                     b.ToTable("Parties");
                 });
 
-            modelBuilder.Entity("GraphQLOrderExample.DomainModels.Order", b =>
+            modelBuilder.Entity("GraphQLOrderDemo.API.DomainModels.Order", b =>
                 {
-                    b.HasOne("GraphQLOrderExample.DomainModels.Party", "Buyer")
+                    b.HasOne("GraphQLOrderDemo.API.DomainModels.Party", "Buyer")
                         .WithMany()
                         .HasForeignKey("BuyerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GraphQLOrderExample.DomainModels.Party", "DeliveryTo")
+                    b.HasOne("GraphQLOrderDemo.API.DomainModels.Party", "DeliveryTo")
                         .WithMany()
                         .HasForeignKey("DeliveryToId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GraphQLOrderExample.DomainModels.Party", "PickupFrom")
+                    b.HasOne("GraphQLOrderDemo.API.DomainModels.Party", "PickupFrom")
                         .WithMany()
                         .HasForeignKey("PickupFromId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GraphQLOrderExample.DomainModels.Party", "Supplier")
+                    b.HasOne("GraphQLOrderDemo.API.DomainModels.Party", "Supplier")
                         .WithMany()
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -171,9 +171,9 @@ namespace GraphQLOrderExample.Migrations
                     b.Navigation("Supplier");
                 });
 
-            modelBuilder.Entity("GraphQLOrderExample.DomainModels.OrderLine", b =>
+            modelBuilder.Entity("GraphQLOrderDemo.API.DomainModels.OrderLine", b =>
                 {
-                    b.HasOne("GraphQLOrderExample.DomainModels.Order", "Order")
+                    b.HasOne("GraphQLOrderDemo.API.DomainModels.Order", "Order")
                         .WithMany("OrderLines")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -182,7 +182,7 @@ namespace GraphQLOrderExample.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("GraphQLOrderExample.DomainModels.Order", b =>
+            modelBuilder.Entity("GraphQLOrderDemo.API.DomainModels.Order", b =>
                 {
                     b.Navigation("OrderLines");
                 });

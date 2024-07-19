@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GraphQLOrderExample.Types;
 
+[UsePaging(IncludeTotalCount = true, DefaultPageSize = 10, MaxPageSize = 50)]
 public class OrderQuery
 {
     public IQueryable<Order> GetOrders(OrderContext context) =>
