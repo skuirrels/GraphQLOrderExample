@@ -8,11 +8,13 @@ namespace GraphQLOrderExample.Types;
 public class OrderQuery
 {
     [UseProjection]
+    [UseFiltering]
     public IQueryable<Order> GetOrders(OrderContext context) =>
         context.Orders.AsNoTracking();
     
     [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10, MaxPageSize = 50)]
     [UseProjection]
+    [UseFiltering]
     public IQueryable<Order> GetPagedOrders(OrderContext context) =>
         context.Orders.AsNoTracking();
     

@@ -23,6 +23,7 @@ builder.Services
     .RegisterDbContext<OrderContext>()
     .AddQueryType<OrderQuery>()
     .AddProjections()
+    .AddFiltering()
     .AddInstrumentation();
 
 var app = builder.Build();
