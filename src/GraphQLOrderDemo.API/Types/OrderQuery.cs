@@ -5,11 +5,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GraphQLOrderExample.Types;
 
-[UsePaging(IncludeTotalCount = true, DefaultPageSize = 10, MaxPageSize = 50)]
 public class OrderQuery
 {
     [UseProjection]
     public IQueryable<Order> GetOrders(OrderContext context) =>
+        context.Orders.AsNoTracking();
+    
+    [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10, MaxPageSize = 50)]
+    [UseProjection]
+    public IQueryable<Order> GetPagedOrders(OrderContext context) =>
         context.Orders.AsNoTracking();
     
     [UseFirstOrDefault]
