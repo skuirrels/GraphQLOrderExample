@@ -21,7 +21,8 @@ builder.Services.AddTransient<OrderContext>();
 builder.Services
     .AddGraphQLServer()
     .RegisterDbContext<OrderContext>()
-    .AddQueryType<OrderQuery>();
+    .AddQueryType<OrderQuery>()
+    .AddInstrumentation();
 
 var app = builder.Build();
 

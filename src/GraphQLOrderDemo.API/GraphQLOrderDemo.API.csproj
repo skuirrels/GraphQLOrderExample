@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Hotchocolate.aspnetcore" Version="13.9.7" />
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="13.9.7" />
+    <PackageReference Include="HotChocolate.Diagnostics" Version="13.9.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
