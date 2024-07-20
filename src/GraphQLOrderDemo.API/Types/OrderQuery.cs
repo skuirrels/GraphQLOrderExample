@@ -8,6 +8,12 @@ namespace GraphQLOrderExample.Types;
 [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10, MaxPageSize = 50)]
 public class OrderQuery
 {
+    [UseProjection]
     public IQueryable<Order> GetOrders(OrderContext context) =>
-        context.Orders.Include(o=>o.OrderLines).Include(b => b.Buyer).Include(s => s.Supplier).Include(p => p.PickupFrom).Include(d => d.DeliveryTo);
+        context.Orders.AsNoTracking();
+    
+    [UseFirstOrDefault]
+    [UseProjection]
+    public IQueryable<Order> GetOrderById(Guid id, OrderContext context) =>
+        context.Orders.Where(o => o.Id == id);
 }

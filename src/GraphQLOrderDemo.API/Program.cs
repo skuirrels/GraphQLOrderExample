@@ -22,6 +22,7 @@ builder.Services
     .AddGraphQLServer()
     .RegisterDbContext<OrderContext>()
     .AddQueryType<OrderQuery>()
+    .AddProjections()
     .AddInstrumentation();
 
 var app = builder.Build();
