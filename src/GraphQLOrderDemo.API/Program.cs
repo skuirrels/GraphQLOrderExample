@@ -24,6 +24,7 @@ builder.Services
     .AddQueryType<OrderQuery>()
     .AddProjections()
     .AddFiltering()
+    .AddSorting()
     .AddInstrumentation();
 
 var app = builder.Build();

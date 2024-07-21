@@ -9,12 +9,14 @@ public class OrderQuery
 {
     [UseProjection]
     [UseFiltering]
+    [UseSorting]
     public IQueryable<Order> GetOrders(OrderContext context) =>
         context.Orders.AsNoTracking();
     
-    [UsePaging(IncludeTotalCount = true, DefaultPageSize = 10, MaxPageSize = 50)]
+    [UsePaging(typeof(Order), IncludeTotalCount = true, DefaultPageSize = 10, MaxPageSize = 50)]
     [UseProjection]
     [UseFiltering]
+    [UseSorting]
     public IQueryable<Order> GetPagedOrders(OrderContext context) =>
         context.Orders.AsNoTracking();
     
