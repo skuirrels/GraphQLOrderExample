@@ -3,7 +3,6 @@
 public class Order
 {
     public Guid Id { get; init; } = Guid.NewGuid();
-
     public string OrderNumber { get; set; }
 
     public OrderState State { get; set; } = OrderState.Provisional;

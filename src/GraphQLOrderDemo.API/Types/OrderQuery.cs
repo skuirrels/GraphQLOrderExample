@@ -1,27 +1,29 @@
 ﻿using GraphQLOrderEExample.Data;
 using GraphQLOrderExample.Data;
+using GraphQLOrderExample.DataContracts;
 using GraphQLOrderExample.DomainModels;
+using GraphQLOrderExample.DomainServices;
+using HotChocolate.Pagination;
+using HotChocolate.Types.Pagination;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace GraphQLOrderExample.Types;
 
-public class OrderQuery
+[QueryType]
+public static class OrderQuery
 {
-    [UseProjection]
-    [UseFiltering]
-    [UseSorting]
-    public IQueryable<Order> GetOrders(OrderContext context) =>
-        context.Orders.AsNoTracking();
+    public static async Task<Order?> GetOrderById(
+        Guid id,
+        OrderService orderService,
+        CancellationToken cancellationToken) 
+        => await orderService.GetOrderByIdAsync(id, cancellationToken);
     
-    [UsePaging(typeof(Order), IncludeTotalCount = true, DefaultPageSize = 10, MaxPageSize = 50)]
-    [UseProjection]
-    [UseFiltering]
-    [UseSorting]
-    public IQueryable<Order> GetPagedOrders(OrderContext context) =>
-        context.Orders.AsNoTracking();
+    [UsePaging(IncludeTotalCount = true, DefaultPageSize = 20, MaxPageSize = 50)]
+    public static async Task<Connection<Order>> GetOrdersAsync(
+        PagingArguments pagingArguments,
+        OrderService orderService,
+        CancellationToken cancellationToken) 
+        => await orderService.GetOrdersAsync(pagingArguments, cancellationToken).ToConnectionAsync();
     
-    [UseFirstOrDefault]
-    [UseProjection]
-    public IQueryable<Order> GetOrderById(Guid id, OrderContext context) =>
-        context.Orders.Where(o => o.Id == id);
 }
