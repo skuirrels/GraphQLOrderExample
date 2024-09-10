@@ -9,14 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hotchocolate.aspnetcore" Version="14.0.0-p.135" />
+    <PackageReference Include="Hotchocolate.aspnetcore" Version="14.0.0-rc.1" />
     <PackageReference Include="HotChocolate.Data" Version="14.0.0-p.135" />
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="14.0.0-p.135" />
     <PackageReference Include="HotChocolate.Data.EntityFramework.Helpers" Version="14.0.0-p.122" />
     <PackageReference Include="HotChocolate.Diagnostics" Version="14.0.0-p.135" />
     <PackageReference Include="HotChocolate.Types.Analyzers" Version="14.0.0-p.135" />
     <PackageReference Include="Mapster" Version="7.4.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
