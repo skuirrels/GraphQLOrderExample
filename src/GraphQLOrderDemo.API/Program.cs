@@ -1,6 +1,6 @@
 using GraphQLOrderExample;
 using GraphQLOrderExample.Data;
-using GraphQLOrderExample.DomainServices;
+using GraphQLOrderExample.Services;
 using GraphQLOrderExample.Types;
 using Microsoft.EntityFrameworkCore;
 

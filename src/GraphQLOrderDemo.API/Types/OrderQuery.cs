@@ -2,7 +2,7 @@
 using GraphQLOrderExample.Data;
 using GraphQLOrderExample.DataContracts;
 using GraphQLOrderExample.DomainModels;
-using GraphQLOrderExample.DomainServices;
+using GraphQLOrderExample.Services;
 using HotChocolate.Pagination;
 using HotChocolate.Types.Pagination;
 using Mapster;

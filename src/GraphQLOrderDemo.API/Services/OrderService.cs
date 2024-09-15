@@ -4,7 +4,7 @@ using HotChocolate.Pagination;
 using Microsoft.EntityFrameworkCore;
 using PagingQueryableExtensions = HotChocolate.Data.PagingQueryableExtensions;
 
-namespace GraphQLOrderExample.DomainServices;
+namespace GraphQLOrderExample.Services;
 
 public sealed class OrderService(OrderContext context)
 {
