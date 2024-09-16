@@ -20,7 +20,6 @@ builder.Services.AddTransient<OrderContext>();
 
 builder.Services
     .AddGraphQLServer()
-    .RegisterDbContext<OrderContext>()
     .AddQueryType<OrderQuery>()
     .AddProjections()
     .AddFiltering()
