@@ -1,6 +1,5 @@
 using GraphQLOrderExample;
 using GraphQLOrderExample.Data;
-using GraphQLOrderExample.Services;
 using GraphQLOrderExample.Types;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,19 +18,14 @@ builder.Services
 // Used for the migrations
 builder.Services.AddTransient<OrderContext>();
 
-builder.Services.AddScoped<OrderService>();
-
 builder.Services
     .AddGraphQLServer()
-    .AddPagingArguments()
+    .RegisterDbContext<OrderContext>()
+    .AddQueryType<OrderQuery>()
     .AddProjections()
     .AddFiltering()
     .AddSorting()
-    .AddAPITypes()
     .AddInstrumentation();
-
-// Register Mapster mappings
-MappingConfig.RegisterMappings();
 
 var app = builder.Build();
 
