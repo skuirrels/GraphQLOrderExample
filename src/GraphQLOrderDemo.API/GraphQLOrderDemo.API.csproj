@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
@@ -9,15 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hotchocolate.aspnetcore" Version="14.0.0-rc.1" />
-    <PackageReference Include="HotChocolate.Data" Version="14.0.0-rc.1" />
-    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="14.0.0-rc.1" />
-    <PackageReference Include="HotChocolate.Diagnostics" Version="14.0.0-rc.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+    <PackageReference Include="Hotchocolate.aspnetcore" Version="15.1.6" />
+    <PackageReference Include="HotChocolate.Data" Version="15.1.6" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.1.6" />
+    <PackageReference Include="HotChocolate.Diagnostics" Version="15.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.6">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
