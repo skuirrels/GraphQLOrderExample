@@ -9,13 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-// Use Docker ConnectionString Param or fallback to the connnectionstring is appsettings.json
-var connectionString = Environment.GetEnvironmentVariable("APP_CONNECTIONSTRING")??
-                       builder.Configuration.GetConnectionString("OrdersDB");
-
-builder.Services
-    .AddDbContext<OrderContext>(
-        o => o.UseNpgsql(connectionString));
+// Use Aspire PostgreSQL integration
+builder.AddNpgsqlDbContext<OrderContext>("OrdersDB");
 
 // Used for the migrations
 builder.Services.AddTransient<OrderContext>();

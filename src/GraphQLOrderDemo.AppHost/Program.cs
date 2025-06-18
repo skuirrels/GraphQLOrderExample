@@ -1,5 +1,13 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.GraphQLOrderDemo_API>("GraphQLOrderDemoAPI");
+// Add PostgreSQL container
+var postgres = builder.AddPostgres("postgres");
+
+// Add the database
+var ordersDb = postgres.AddDatabase("OrdersDB");
+
+// Add the API project with database reference
+builder.AddProject<Projects.GraphQLOrderDemo_API>("GraphQLOrderDemoAPI")
+    .WithReference(ordersDb);
 
 builder.Build().Run();
