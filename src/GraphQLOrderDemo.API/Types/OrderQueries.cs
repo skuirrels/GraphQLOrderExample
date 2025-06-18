@@ -1,10 +1,10 @@
 using GraphQLOrderExample.Business.Interfaces;
 using GraphQLOrderExample.Business.Models;
 using GraphQLOrderExample.DomainModels;
+using HotChocolate;
 
 namespace GraphQLOrderExample.Types;
 
-[QueryType]
 public class OrderQueries
 {
     /// <summary>
