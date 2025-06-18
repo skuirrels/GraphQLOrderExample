@@ -1,4 +1,6 @@
 using GraphQLOrderExample;
+using GraphQLOrderExample.Business.Interfaces;
+using GraphQLOrderExample.Business.Services;
 using GraphQLOrderExample.Data;
 using GraphQLOrderExample.Types;
 using Microsoft.EntityFrameworkCore;
@@ -7,20 +9,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-// Use Docker ConnectionString Param or fallback to the connnectionstring is appsettings.json
-var connectionString = Environment.GetEnvironmentVariable("APP_CONNECTIONSTRING")??
-                       builder.Configuration.GetConnectionString("OrdersDB");
-
-builder.Services
-    .AddDbContext<OrderContext>(
-        o => o.UseNpgsql(connectionString));
+// Use Aspire PostgreSQL integration
+builder.AddNpgsqlDbContext<OrderContext>("OrdersDB");
 
 // Used for the migrations
 builder.Services.AddTransient<OrderContext>();
 
+// Register business layer services
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType<OrderQuery>()
+    .AddQueryType<OrderQueries>()
+    .AddMutationType<OrderMutations>()
     .AddProjections()
     .AddFiltering()
     .AddSorting()
