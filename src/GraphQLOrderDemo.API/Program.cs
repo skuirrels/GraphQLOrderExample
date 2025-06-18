@@ -1,4 +1,6 @@
 using GraphQLOrderExample;
+using GraphQLOrderExample.Business.Interfaces;
+using GraphQLOrderExample.Business.Services;
 using GraphQLOrderExample.Data;
 using GraphQLOrderExample.Types;
 using Microsoft.EntityFrameworkCore;
@@ -18,9 +20,13 @@ builder.Services
 // Used for the migrations
 builder.Services.AddTransient<OrderContext>();
 
+// Register business layer services
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType<OrderQuery>()
+    .AddQueryType<OrderQueries>()
+    .AddMutationType<OrderMutations>()
     .AddProjections()
     .AddFiltering()
     .AddSorting()
